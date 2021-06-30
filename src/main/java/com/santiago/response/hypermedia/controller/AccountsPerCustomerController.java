@@ -40,13 +40,14 @@ public class AccountsPerCustomerController {
                 jsonApiModel()
                         .model(customer)
                         .relationship("accounts", accounts)
+                        .link(Link.of(Constants.BASE_URL+id+"/accounts").withSelfRel())
                         .included(accounts)
                         .build();
 
         List<RepresentationModel<?>> cus = new ArrayList<>();
         cus.add(jsonApiModel);
         PagedModel.PageMetadata pageMetadata =  new PagedModel.PageMetadata(2, 1, 2, 1);
-        Link selfLink = Link.of(Constants.BASE_URL+id).withSelfRel();
+        Link selfLink = Link.of(Constants.BASE_URL+id+"/accounts").withSelfRel();
         final PagedModel<RepresentationModel<?>> pagedModel = PagedModel.of(cus, pageMetadata, selfLink);
 
         RepresentationModel<?> pagedJasonApiModel =
