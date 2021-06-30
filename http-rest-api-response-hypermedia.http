@@ -1,0 +1,14 @@
+### Variables
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+
+### Get all customers
+GET /api/customers HTTP/1.1
+Host: {{host}}
+
+
+### Get all accounts for a particular customer
+GET /api/customers/123/accounts HTTP/1.1
+Host: {{host}}
